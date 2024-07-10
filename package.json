@@ -17,7 +17,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "prisma": "prisma"
   },
   "dependencies": {
     "@fastify/static": "^7.0.4",
@@ -28,7 +29,9 @@
     "@nestjs/platform-fastify": "^10.3.10",
     "@nestjs/swagger": "^7.4.0",
     "@nestjs/terminus": "^10.2.3",
+    "@prisma/client": "5.16.2",
     "morgan": "^1.10.0",
+    "prisma": "^5.16.2",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
     "unplugin-swc": "^1.5.1",
