@@ -16,7 +16,7 @@ export async function bootstrap() {
   );
 
   const corsOptions: CorsOptions = {
-    origin: `${process.env.CLIENT_URL}:${process.env.CLIENT_PORT}`, // Origen permitido
+    origin: `${process.env.CLIENT_URL}`, // Origen permitido
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true, // Habilitar el envío de cookies
   };
@@ -29,7 +29,7 @@ export async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
-  const envVars = ['CLIENT_PORT', 'CLIENT_URL'];
+  const envVars = ['PORT', 'CLIENT_URL', 'DATABASE_URL'];
   envVars.forEach((envVar) => {
     if (!process.env[envVar]) {
       console.log(envVar);
