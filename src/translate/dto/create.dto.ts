@@ -4,10 +4,10 @@ import { z } from 'zod';
 
 export const InputSchema = extendApi(
   z.object({
-    project: z.string().default('default'),
-    path: z.string(),
-    lang: z.string(),
-    locale: z.string(),
+    project: z.string().default('clay'),
+    path: z.string().default('home'),
+    lang: z.string().default('default'),
+    locale: z.string().default('default'),
     translations: z.record(z.string()),
   }),
   {
