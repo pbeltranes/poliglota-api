@@ -5,7 +5,6 @@ import { z } from 'zod';
 export const InputSchema = extendApi(
   z.object({
     project: z.string(),
-    path: z.string(),
   }),
   {
     title: 'Translation',

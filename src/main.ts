@@ -29,6 +29,11 @@ export async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
+  console.log(
+    process.env.PORT,
+    process.env.CLIENT_URL,
+    process.env.DATABASE_URL,
+  );
   const envVars = ['PORT', 'CLIENT_URL', 'DATABASE_URL'];
   envVars.forEach((envVar) => {
     if (!process.env[envVar]) {
