@@ -36,12 +36,10 @@ export class TranslateController {
   @ApiParam({ type: string, name: 'locale', required: true })
   async get(@Param() params: ParamsDto): Promise<ResourceClass> {
     const { project, path, lang, locale } = params;
-    console.log(params);
 
     const value = await this.cacheManager.get(
       `${project}:${path}:${lang}:${locale}`,
     );
-    console.log(value);
     if (value) return value as ResourceClass;
 
     const resouce = await this.translateService.retrieve(params);
