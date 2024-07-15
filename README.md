@@ -1,73 +1,67 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+<h3 align="center">Prueba Clay Technologies</h3>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Descripción
+Este proyecto es una prueba técnica diseñada para demostrar habilidades en el desarrollo de software. La aplicación permite gestionar idiomas para proyectos y aplicaciones según los requerimientos y parámetros establecidos por el cliente.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+> Este projecto uso como framework principal [Nest](https://docs.nestjs.com/) en conjunto con [Prisma](https://www.prisma.io/orm), además se recomienda uso de [pnpm](https://pnpm.io/es/installation#usando-pnpm). 
 
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
+## Instalación
+Para configurar y correr la aplicación localmente, sigue estos pasos:
 ```bash
 $ pnpm install
 ```
 
-## Running the app
+## Migraciones
+Primero debemos crear el env, para ello copiamos el de ejemplo:
+```bash
+cp .env.example .env
+```
+Para manejar las migraciones de la base de datos, usa los siguientes comandos:
 
 ```bash
-# development
-$ pnpm run start
+# Ejecutar y crear collections en la base datos
+$ pnpm run prisma generate
 
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
 ```
 
-## Test
+## Ejecución de la aplicación
+Puedes correr la aplicación en modo desarrollo utilizando los comandos:
+```bash
+# Modo desarrollo
+$ pnpm run start
+
+# Modo watch (reinicio automático)
+$ pnpm run start:dev
+```
+La documentación y los endpoints de prueba están disponibles en Swagger en la siguiente URL:
+```
+# ruta de documentacion y test en swagger
+$ http://localhost:8080/api
+
+```
+
+## Pruebas
 
 ```bash
-# unit tests
+# Ejecutar pruebas unitarias
 $ pnpm run test
 
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
+# Ver la cobertura de pruebas
 $ pnpm run test:cov
 ```
 
-## Support
+## Revisión funcionalidades
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+1. Accede a Swagger en http://localhost:8080/api.
 
-## Stay in touch
+La aplicación dispone de 5 endpoints. Las 4 operaciones CRUD para el manejo de idiomas de un proyecto, incluyendo ruta, lenguaje y localidad, donde el conjunto de claves/valor dependerá de estos 4 parámetros. Además, hay un quinto endpoint del tipo GET usado en el frontend para devolver el idioma que se desea manejar según la vista.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-## License
+## Alcances
 
-Nest is [MIT licensed](LICENSE).
+- Metodo Create solo creara, en caso que el elemento que se busque se intente crear ya exista, retornara el objeto.
+- No se completó la cobertura total de pruebas debido a limitaciones de tiempo y la naturaleza práctica del ejercicio.
+
+## Author
+
+- Paul Beltrán - [Github](https://github.com/pbeltranes) - [Lindked](https://www.linkedin.com/in/paul-beltran-espinosa/)
