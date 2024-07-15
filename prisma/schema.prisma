@@ -13,7 +13,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model translation {
-  id  String  @id @default(auto()) @map("_id") @db.ObjectId
-  key String?
+model Translation {
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  project      String
+  path         String
+  lang         String
+  locale       String
+  translations Json
 }
