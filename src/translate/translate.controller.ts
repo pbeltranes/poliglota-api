@@ -1,5 +1,5 @@
 import { ZodValidationPipe } from '@anatine/zod-nestjs';
-import { Cache, CACHE_MANAGER } from '@nestjs/cache-manager';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import {
   Body,
   Controller,
@@ -13,6 +13,7 @@ import {
   BadRequestException,
 } from '@nestjs/common';
 import { ApiBody, ApiParam, ApiTags } from '@nestjs/swagger';
+import { Cache } from 'cache-manager'; // ! Don't forget this import
 import { CreateDto } from 'translate/dto/create.dto';
 import { ParamsDto } from 'translate/dto/params.dto';
 import { UpdateDto } from 'translate/dto/update.dto';
@@ -35,17 +36,19 @@ export class TranslateController {
   @ApiParam({ type: string, name: 'locale', required: true })
   async get(@Param() params: ParamsDto): Promise<ResourceClass> {
     const { project, path, lang, locale } = params;
+    console.log(params);
+
     const value = await this.cacheManager.get(
       `${project}:${path}:${lang}:${locale}`,
     );
+    console.log(value);
     if (value) return value as ResourceClass;
 
     const resouce = await this.translateService.retrieve(params);
-    if (resouce) {
-      this.cacheManager.set(`${project}:${path}:${lang}:${locale}`, resouce, 0);
-      return resouce;
-    }
-    throw new Error('Resource not found');
+    if (!resouce) throw new BadRequestException('Resource not found');
+
+    this.cacheManager.set(`${project}:${path}:${lang}:${locale}`, resouce, 0);
+    return resouce;
   }
 
   @Post()
