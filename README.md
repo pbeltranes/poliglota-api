@@ -1,4 +1,4 @@
-<h3 align="center">Prueba Clay Technologies</h3>
+<h2 align="center">Prueba Clay Technologies</h3>
 
 ## Descripción
 Este proyecto es una prueba técnica diseñada para demostrar habilidades en el desarrollo de software. La aplicación permite gestionar idiomas para proyectos y aplicaciones según los requerimientos y parámetros establecidos por el cliente.
@@ -40,7 +40,7 @@ $ http://localhost:8080/api
 
 ```
 
-## Pruebas
+## Pruebas (WIP)
 
 ```bash
 # Ejecutar pruebas unitarias
