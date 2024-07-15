@@ -1,3 +1,4 @@
+import { CacheModule } from '@nestjs/cache-manager';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from 'prisma/prisma.module';
@@ -10,6 +11,7 @@ import { TranslateService } from './translate.service';
       isGlobal: true, // Makes ConfigModule available globally
     }),
     PrismaModule,
+    CacheModule.register(),
   ],
   controllers: [TranslateController],
   providers: [TranslateService],
