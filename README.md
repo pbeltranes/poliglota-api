@@ -1,9 +1,9 @@
 <h2 align="center">Prueba Clay Technologies</h3>
 
 ## Descripción
-Este proyecto es una prueba técnica diseñada para demostrar habilidades en el desarrollo de software. La aplicación permite mostrar idiomas desde la API de acuerdo a los parametros establecidos.
+Este proyecto es una prueba técnica diseñada para demostrar habilidades en el desarrollo de software. La aplicación permite gestionar idiomas para proyectos y aplicaciones según los requerimientos y parámetros establecidos por el cliente.
 
-> Este projecto uso como framework principal [Next](https://docs.nestjs.com/) en conjunto con [Tailwind](https://tailwindcss.com/) y [Shadcn](https://ui.shadcn.com/), además se recomienda uso de [pnpm](https://pnpm.io/es/installation#usando-pnpm). 
+> Este projecto uso como framework principal [Nest](https://docs.nestjs.com/) en conjunto con [Prisma](https://www.prisma.io/orm), además se recomienda uso de [pnpm](https://pnpm.io/es/installation#usando-pnpm). 
 
 ## Instalación
 Para configurar y correr la aplicación localmente, sigue estos pasos:
@@ -11,28 +11,34 @@ Para configurar y correr la aplicación localmente, sigue estos pasos:
 $ pnpm install
 ```
 
-## Ambientes
+## Migraciones
 Primero debemos crear el env, para ello copiamos el de ejemplo:
 ```bash
 cp .env.example .env
 ```
 Para manejar las migraciones de la base de datos, usa los siguientes comandos:
 
+```bash
+# Ejecutar y crear collections en la base datos
+$ pnpm run prisma generate
+
+```
 
 ## Ejecución de la aplicación
 Puedes correr la aplicación en modo desarrollo utilizando los comandos:
 ```bash
+# Modo desarrollo
+$ pnpm run start
 
 # Modo watch (reinicio automático)
-$ pnpm dev
+$ pnpm run start:dev
 ```
-La ruta de acceso es:
+La documentación y los endpoints de prueba están disponibles en Swagger en la siguiente URL:
 ```
-# ruta de acceso
-$ http://localhost:3000
+# ruta de documentacion y test en swagger
+$ http://localhost:8080/api
 
 ```
-
 
 ## Pruebas (WIP)
 
@@ -46,20 +52,15 @@ $ pnpm run test:cov
 
 ## Revisión funcionalidades
 
-1. La applicación es accesible desde http://localhost:3000 además dispone de dos rutas adiconales para comprobar que se puede ajusta los textos a cada ruta.
+1. Accede a Swagger en http://localhost:8080/api.
+
+La aplicación dispone de 5 endpoints. Las 4 operaciones CRUD para el manejo de idiomas de un proyecto, incluyendo ruta, lenguaje y localidad, donde el conjunto de claves/valor dependerá de estos 4 parámetros. Además, hay un quinto endpoint del tipo GET usado en el frontend para devolver el idioma que se desea manejar según la vista.
 
 
-```
-http://localhost:3000
-http://localhost:3000/dashaboard
-http://localhost:3000/dashboard/profile
-```
+## Alcances
 
-## Alcances (WIP)
-- La aplicación tiene un SSR donde se desactiva el cache para fines practicos. 
-- La aplicación almacena de manera local el idioma seleccionado actualmente, si llega a cambiar de ruta y la nueva ruta no dispone el idioma actual puede fallar, simplemente se debe cambiar a los idiomas disponibles.
-
-
+- Metodo Create solo creara, en caso que el elemento que se busque se intente crear ya exista, retornara el objeto.
+- No se completó la cobertura total de pruebas debido a limitaciones de tiempo y la naturaleza práctica del ejercicio.
 
 ## Author
 
